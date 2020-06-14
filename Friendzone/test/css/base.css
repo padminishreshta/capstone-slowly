@@ -21,15 +21,3 @@ input
   border-radius: 4px;
   box-sizing: border-box;
 }
-
-#back_1
-{
-  background-image:url(/static/imgs/log.jpg);
-}
-
-#back_2
-{
-  background-image:linear-gradient(to right,rgb(248, 198, 222),rgb(245, 244, 244))
-}
-
-
