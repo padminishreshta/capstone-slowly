@@ -1,0 +1,35 @@
+.titl
+{
+  font-weight: bold;
+  font-size: 50px;
+}
+ul
+{
+list-style-type: none;
+}
+li
+{
+    color: black;
+}
+input
+{
+  width: 100%;
+  padding: 12px 20px;
+  margin-top:8px;
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#back_1
+{
+  background-image:url(/static/imgs/log.jpg);
+}
+
+#back_2
+{
+  background-image:linear-gradient(to right,rgb(248, 198, 222),rgb(245, 244, 244))
+}
+
+

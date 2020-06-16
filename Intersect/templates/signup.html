@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{%load static%}
+{% block content %}
+<body id="back_2" onload="fun_1();">
+<div class="container-fluid" >
+    <div class="card col-md-7 offset-md-2" style="top:4em">
+        <center><h1 class="title">SignUP</h1>
+        <p>Please, use the following form to SignUP:</p></center>
+        <hr>
+        <form method="POST">  
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-6">
+                    &nbsp;<input type="text" name="user" placeholder="Username" style="width: 300px;"><br>
+                    <input type="text" name="email" placeholder="Email" style="width: 300px;"><br>
+                    <input type="text" name="age" placeholder="Age" style="width: 300px;"><br>
+                    <input type="text" name="pass" placeholder="Password" style="width: 300px;"><br>
+                </div>
+                <div class="col-md-6">
+                    <label style="font-size: larger;margin-top: 1em;margin-bottom: 1em;"><b>Interests</b></label>
+                    <br>
+                    <label style="font-size: large; margin-right: 6em; margin-bottom: 2em;">Sports</label>
+                    <select name="Sportselect">
+                        <option>---------</option>
+                        <option>
+                           Cricket
+                        </option>
+                        <option>
+                            Soccer
+                        </option>
+                        <option>
+                            Basketball
+                        </option>
+                    </select>
+                    <label style="font-size: large; margin-right: 6em;margin-bottom: 2em;">Books</label>
+                    <select name="Bookselect"> 
+                        <option>---------</option>
+                        <option>
+                           Technology
+                        </option>
+                        <option>
+                            History
+                        </option>
+                        <option>
+                            Fiction
+                        </option>
+                    </select>
+                    <label style="font-size: large; margin-right: 2.5em;margin-bottom: 2em;">Miscellaneous</label>
+                    <select name="Misciselect">
+                        <option>---------</option>
+                        <option>
+                            Art & Design
+                        </option>
+                        <option>
+                            Music
+                        </option>
+                        <option>
+                            Yoga
+                        </option>
+                    </select>
+                    <label style="font-size: large; margin-right: 5.5em;margin-bottom: 2em;">Movies</label>
+                    <select name="Movieselect">
+                        <option>---------</option>
+                        <option>
+                            Horror
+                        </option>
+                        <option>
+                            Comedy
+                        </option>
+                        <option>
+                            Thriller
+                        </option>
+                        <option>
+                            Romance
+                        </option>
+                    </select>
+                </div>
+            </div>    
+            <center><p><input type="submit" class="btn-outline-info" value="SignUP and Explore" style="width: max-content;"></p></center>
+        </form>      
+    </div>  
+</div>
+<script src="{% static 'js/base.js'%}">
+</script>
+</body>
+{% endblock %}  

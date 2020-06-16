@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<body id="back_2" onload="fun_1()">
+<div class="container">
+    <div class="card col-md-4" style="top:4em">
+        <h1 class="title">Login</h1>
+        <p>Please, Authorize yourself</p>
+        <p style="color: red;">{{msg}}</p>
+        <form method="POST">  
+            {% csrf_token %}
+            <input type="text" name="user" placeholder="Username"><br>
+            <input type="password" name="pass" placeholder="Password"><br>
+            <p><input type="submit" value="Signin"></p>
+            <a href="{%url 'signup'%}">New to Intersect?</a>
+        </form>      
+    </div>  
+</div>
+<script src="{% static 'js/base.js'%}">
+</script>
+</body>
+{% endblock %}  

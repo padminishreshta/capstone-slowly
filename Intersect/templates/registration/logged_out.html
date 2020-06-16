@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Logged out{% endblock %}
+
+{% block content %}
+<div class="container-fluid card" style="height : 9em;"><br>
+  <h1>Successfully Logged Out</h1>
+    <h5>You can <a href="{% url 'logiN' %}">log-in again</a>.</h5>
+</div>
+{% endblock %}
