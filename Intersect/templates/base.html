@@ -9,6 +9,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/infinite.min.js' %}"></script>
 </head>
 <body background="{%static 'imgs/back.jpg'%}" style="background-size: 100%">
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f1e0c5">
@@ -27,7 +29,11 @@
         <a class="nav-link" href="{% url 'contact'%}">Contact</a>
       </li>
       <li class="nav-item active" style="font-size: large;">
-        <a class="nav-link" href="{% url 'profile'%}">Profile</a>
+        {% if request.user.is_authenticated %}
+          <a class="nav-link" href="{% url 'profile'%}">Profile</a>
+        {% else %}
+          <a class="nav-link" href="{% url 'logiN'%}">Profile</a>
+        {% endif %}  
       </li>
       &nbsp;
       <li class="nav-item active">

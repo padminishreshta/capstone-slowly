@@ -2,12 +2,31 @@ from django.shortcuts import render,HttpResponse,redirect
 from App.models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
+
 # Create your views here.
 def home(request):
     return render(request,'home.html')
 
 def profile(request):
-    return render(request,'profile.html')
+    userr = Account.objects.get(User=request.user)
+    ou = Account.objects.filter(pk__isnull=False)
+    otherusers = ou.exclude(User=request.user)
+    Personal_interests=[]
+    Match_score={}
+    for i in userr.Interests:
+        Personal_interests.append(i)
+
+    for i in range(0,len(otherusers)): 
+        ot_interests =[]
+        count=0
+        for j in otherusers[i].Interests: 
+            ot_interests.append(j)
+        for k in range(0,len(ot_interests)):
+            if Personal_interests[k]==ot_interests[k]:
+                count+=1       
+        Match_score[userr.User,otherusers[i].User] = (count/len(ot_interests))*100         
+    context={'userr':userr,'Match_score':Match_score.items()}
+    return render(request,'profile.html',context)
 
 def contact(request):
     return HttpResponse("Contact")
@@ -38,7 +57,7 @@ def logiN(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return render(request,'profile.html')
+            return redirect('profile')
         else:
             msg = "Invalid username or password."    
             return render(request,'login.html',context = {'msg':msg,'user':user})

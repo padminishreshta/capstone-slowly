@@ -11,6 +11,11 @@ class Account(models.Model):
             models.CharField(max_length=200, blank=True),
             size=8,
         )
-    Friends = models.ManyToManyField('self', null=True, blank=True)
     def __str__(self):
         return self.User    
+
+class Friends_setup(models.Model):
+    User = models.ForeignKey(Account,null=True,on_delete=models.SET_NULL)
+    Friends = models.ManyToManyField('self', null=True, blank=True)
+    def __str__(self):
+        return self.User+"'s"+" Friendslist"    

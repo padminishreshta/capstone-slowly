@@ -1,24 +1,70 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-<body id="back_1">
+<head>
+  <Style>
+    .card{
+      background-color: rgb(242, 210, 245);
+    }
+    a{
+      cursor: pointer;
+    }
+  </Style>
+</head>
+<body id="back_1" onload="fun_1()">
     <div class="row" style="padding-top: 2em;">
-      <div class="col-md-7 offset-md-1">
+      <div class="col-md-6 offset-md-1">
         <div class="card" style="padding-top: 2%;padding-left: 1%;height: 110px;">
-          <a class="btn btn-outline-info " href="{% url 'home'%}"  style="font-family: cursive;width: max-content;">&#8592;&nbsp;Home</a>
-          <h3 style="font-family: cursive;"><center>Profile</center></h3>
+          <a class="btn btn-outline-info " href="{% url 'home'%}"  style="font-family: sans-serif;width: max-content;">&#8592;&nbsp;Home</a>
+          <h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><center>Profile</center></h3>
         </div>
-        <div class="dash-row">
-        <table class="table">
-          <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </table>
       </div>
+      <div class="col-md-4">
+        <div class="card" style="padding-top: 12%;padding-left: 1%;height: 110px;width: 500px;">
+          <h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><center>Friends</center></h3> 
+        </div>
       </div>
     </div>
-  </body>    
+    <div class="row" style="padding-top: 2em;">
+      <div class="col-md-6 offset-md-1">
+        <div class="card" style="padding-top: 5%;padding-left: 7%;height: 350px;">
+          <table class="table">
+              <tr><br>
+                <td><img src="{% static 'imgs/Sports.jpg'%}" style="width: 100px;height: 100px;"></td>
+                <td><img src="{% static 'imgs/Books.jpg'%}" style="width: 100px;height: 100px;"></td>
+                <td><img src="{% static 'imgs/hobby.jpg'%}" style="width: 100px;height: 100px;"></td>
+                <td><img src="{% static 'imgs/movies.webp'%}" style="width: 100px;height: 100px;"></td>
+              </tr>  
+              <tr style="font-weight: bold;font-family: corbel;">
+              {% for i in userr.Interests%}
+              <td>{{i}}</td>
+              {%endfor%}
+              </tr>
+          </table>
+        </div>
+      </div>  
+      <div class="col">
+        <div class="card" style="padding-top: 5%;padding-left: 5%;height: 350px;width: 500px;font-family: corbel;font-size: large;">
+          <div class="infinite-item">
+              <table class="table">
+                <tr>
+                  <th>Users</th>
+                  <th>Match Score</th> 
+                  <th>Contact</th>             
+                </tr>
+                {% for key,value in Match_score%}
+                <tr>
+                    <td>{{ key.0 }} and {{key.1}}</td>
+                    <td style="text-align: center;">{{value}} %</td>
+                    <td style="text-align: center;"><a class="btn-sm btn-info">Chat</a></td>
+                </tr>
+                {%endfor%}
+              </table>
+            </div>
+        </div>
+      </div>  
+    </div>
+    <script src="{% static 'js/base.js'%}"></script>
+</body>    
 {%endblock%}    
